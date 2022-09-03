@@ -91,7 +91,7 @@
         </div>
     </div>
     <div class="col-md-5" style="float: left; padding: 0px;">
-        <img src="<?php echo URL::to('/'); ?>/By_Design_fundo.jpeg" style="max-width: 360px; height: 433px;" />
+        <img src="<?php echo URL::to('/'); ?>/By_Design.png" style="max-width: 360px; height: 433px;" />
     </div>
 </div>
 <!-- /.login-box -->
