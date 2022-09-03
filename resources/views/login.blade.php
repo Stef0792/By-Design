@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="holdLogo">
-                            <img src="<?php echo URL::to('/'); ?>/By_Design.png" style="max-width: 220px;" />
+                            <img src="<?php echo URL::to('/'); ?>/logoBY_design.jpeg" style="max-width: 220px;" />
                         </div>
                     </div>
                 </div>
