@@ -66,7 +66,7 @@
                             </div>
                         </div>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-2">
                         <input type="password" name="password" class="form-control inputNoBorder" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text iconNoBorder">
