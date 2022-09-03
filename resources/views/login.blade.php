@@ -58,7 +58,7 @@
 
                     <form action="{{ route('login') }}" method="post">
                         @csrf
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-2">
                         <input type="email" name="email" class="form-control inputNoBorder" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text iconNoBorder">
