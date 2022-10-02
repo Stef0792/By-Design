@@ -1,0 +1,185 @@
+{
+	"index":
+	{
+		"scripts":
+		[
+			"/assets/scripts/modules/areas.js"
+		],
+
+		"styles":
+		[
+
+		],
+
+		"fields":
+		[
+
+		],
+
+		"modals":
+		[
+
+		],
+
+		"list_fields":
+		{
+			"id":"#",
+			"razao_social":"Razão Social",
+			"responsavel":"Responsavel",
+			"responsavel_celular":"Celular do Responsavel"			
+		}
+	},
+
+	"form":
+	{
+		"scripts":
+		[
+			"/assets/scripts/modules/areas.js"
+		],
+
+		"styles":
+		[
+
+		],
+
+		"fields":
+		[
+			{
+				"label":true,
+				"name":"razao_social",
+				"translate":"Razão Social",
+				"type":"text",				
+				"id":"razao_social",
+				"class":"",
+				"validate":"",
+                "row": 1,
+                "size": 12
+			},
+            {
+				"label":true,
+				"name":"cnpj",
+				"translate":"cnpj",
+				"type":"text",
+				"id":"cnpj",
+				"class":"",				
+                "row": 2,
+                "size": 3
+			},	
+			{
+				"label":true,
+				"name":"responsavel",
+				"translate":"responsavel",
+				"type":"text",
+				"id":"responsavel",
+				"class":"",				
+                "row": 2,
+                "size": 3
+			},	            
+            {
+				"label":true,
+				"name":"responsavel_celular",
+				"translate":"responsavel_celular",
+				"type":"text",
+				"id":"responsavel_celular",
+				"class":"",				
+                "row": 2,
+                "size": 3
+			},
+            {
+				"label":true,
+				"name":"responsavel_email",
+				"translate":"responsavel_email",
+				"type":"text",
+				"id":"responsavel_email",
+				"class":"",				
+                "row": 2,
+                "size": 3
+			},
+			{
+				"label":true,
+				"name":"cep",
+				"translate":"cep",
+				"type":"text",
+				"id":"cep",
+				"class":"",
+                "row": 3,
+                "size": 2                
+			},
+			{
+				"label":true,
+				"name":"logradouro",
+				"translate":"logradouro",
+				"type":"text",
+				"id":"logradouro",
+				"class":"",
+                "row": 3,
+                "size": 6
+			},
+			{
+				"label":true,
+				"name":"numero",
+				"translate":"numero",
+				"type":"text",
+				"id":"numero",
+				"class":"",
+                "row": 3,
+                "size": 2
+			},
+			{
+				"label":true,
+				"name":"complemento",
+				"translate":"complemento",
+				"type":"text",
+				"id":"complemento",
+				"class":"",				
+                "row": 3,
+                "size": 2
+			},	
+            {
+				"label":true,
+				"name":"bairro",
+				"translate":"bairro",
+				"type":"text",
+				"id":"bairro",
+				"class":"",				
+                "row": 4,
+                "size": 3
+			},
+            {
+				"label":true,
+				"name":"cidade",
+				"translate":"cidade",
+				"type":"text",
+				"id":"cidade",
+				"class":"",
+                "row": 4,
+                "size": 3				
+			},
+            {
+				"label":true,
+				"name":"estado",
+				"translate":"estado",
+				"type":"text",
+				"id":"estado",
+				"class":"",
+				"row": 4,
+                "size": 1
+			},
+            {
+				"label":true,
+				"name":"questionario",
+				"translate":"questionario",
+				"type":"template",	
+                "template": "aprovacao",			
+				"class":"",
+                "row": 5,
+                "size": 12
+			}
+		],
+
+		"modals":
+		[
+
+		]
+	}
+}

@@ -1,0 +1,65 @@
+{
+	"index":
+	{
+		"scripts":
+		[
+			"/assets/scripts/modules/areas.js"
+		],
+
+		"styles":
+		[
+
+		],
+
+		"fields":
+		[
+
+		],
+
+		"modals":
+		[
+            "visualizar"
+		],
+
+		"list_fields":
+		{
+			"id":"#",
+			"fornecedor_id":"Fornecedor",
+			"user_solicitacao_id":"Solicitante",			
+			"status":"Status"			
+		}
+	},
+
+	"form":
+	{
+		"scripts":
+		[
+			"/assets/scripts/modules/areas.js"
+		],
+
+		"styles":
+		[
+
+		],
+
+		"fields":
+		[
+			{
+				"label":true,
+				"name":"template",
+				"translate":"template",
+				"type":"template",
+				"template": "aprovacao",
+				"id":"template",
+				"class":"",
+				"validate":"",
+				"size": 12
+			}
+		],
+
+		"modals":
+		[
+
+		]
+	}
+}
