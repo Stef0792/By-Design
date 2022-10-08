@@ -45,6 +45,17 @@
                                 name="password_confirmation" required />
             </div>
 
+            <div class="mt-4">
+                <label for="departamento" class="block font-medium text-sm text-gray-700"> Departamento </label>
+
+                <select name="departamento" id="departamento" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"> 
+                    <option value="juridico"> Juridico </option>
+                    <option value="compras"> Compras </option> 
+                    <option value="comercial"> Comercial </option>
+                    <option value="tecnologia"> Tecnologia </option>
+                </select>
+            </div>
+
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}

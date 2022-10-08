@@ -1,22 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="container-fluid">
-    <div class="row mb-2">
-        <div class="col-sm-6">
-        <h1 class="m-0">Dashboard v2</h1>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v2</li>
-        </ol>
-        </div><!-- /.col -->
-    </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-</div>
-<!-- /.content-header -->
+
 
     <!-- Main content -->
 <section class="content">
@@ -28,34 +12,34 @@
 		<div class="card bg-white m-b" style="margin-top:60px;">	  
 		<div class="card" style="margin-bottom: 0px;">	  		
 				<div class="card-header">
-					<div class="col-sm-6"></div>
-					<div class="col-sm-6" style="text-align:right;">
-						
-							<a href="{{ url($Area->url.'/form/') }}" class="btn btn-primary btn-sm btn-icon mr5">
+					<div class="col-sm-6" style="float: left; height: 1px;"></div>
+					<div class="col-sm-6" style="float: left; text-align:right;">						
+						<a href="{{ url($Area->url.'/form/') }}" class="btn btn-primary btn-sm btn-icon mr5">
 							<i class="icon-plus"></i>
 							<span>Novo registro</span>
-							</a>
-						
-						<?php if(isset($ConfigFile['extra_buttons'])): ?>
-						<?php foreach($ConfigFile['extra_buttons'] AS $button): ?>
-						<?php
-
-							$data_attr = '';
-
-							if(isset($button['data'])){
-								foreach( $button['data'] AS $key => $val ){
-									$data_attr.=" data-".$key."=".$val."";
-								}
-							}
-
-						?>
-						<a href="{{ $button['url'] }}" class="btn btn-sm btn-icon mr5 {{ $button['class'] }}" id="{{ $button['id'] }}" {{ $data_attr }}>
-						<i class="{{ $button['icon'] }}"></i>
-						<span>{{ $button['titulo'] }}</span>
 						</a>
-						<?php endforeach;?>
-						<?php endif;?>
 					</div>
+						
+					<?php if(isset($ConfigFile['extra_buttons'])): ?>
+					<?php foreach($ConfigFile['extra_buttons'] AS $button): ?>
+					<?php
+
+						$data_attr = '';
+
+						if(isset($button['data'])){
+							foreach( $button['data'] AS $key => $val ){
+								$data_attr.=" data-".$key."=".$val."";
+							}
+						}
+
+					?>
+					<a href="{{ $button['url'] }}" class="btn btn-sm btn-icon mr5 {{ $button['class'] }}" id="{{ $button['id'] }}" {{ $data_attr }}>
+					<i class="{{ $button['icon'] }}"></i>
+					<span>{{ $button['titulo'] }}</span>
+					</a>
+					<?php endforeach;?>
+					<?php endif;?>
+					
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">
@@ -71,14 +55,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						@if(count($Model))
-							@foreach($Model AS $key => $val)
+						@if($Model)
+							@foreach($Model AS $key => $val) 
 								<tr>
 									@foreach($ConfigFile['list_fields'] AS $value => $field)
 										<?php
 
 											$method_test = 'get_'.$value;
-
+											// if($method_test == "get_id_fornecedor")
 											if(method_exists($val, $method_test)){
 												$value = $val->$method_test($val);
 											} else {
@@ -100,7 +84,7 @@
 											<a href="{{ url($Area->url.'/delete/'.$val->pk()) }}" class="btn btn-danger btn-xs DeletarRegistro">Deletar</a>
 											@endif
 
-											@if($Controller->botaoVisualizar)
+											@if($val->botaoVisualizar)
 											<a href="#" class="btn btn-info btn-xs visualizarRegistro" id="{{ $val->pk() }}">Visualizar</a>
 											@endif
 										</td>
@@ -117,12 +101,12 @@
 				<!-- Pagination -->
 				<?php
 
-					if(count($Model)){
+					if($Model){
 
 						if(isset($_GET) && $_GET){
-							echo $Model->appends($_GET)->links();
+							// echo $Model->appends($_GET)->links();
 						} else {
-							echo $Model->links();
+							// echo $Model->links();
 						}
 					}
 
@@ -134,6 +118,13 @@
 		</div>
 	</div>
 </section>
+<!-- MODALS -->
+@if(isset($ConfigFile['modals']) && $ConfigFile)
+@foreach($ConfigFile['modals'] AS $modal )
+@include("modals.$modal")
+@endforeach
+@endif
+<!-- /MODALS -->
 
 <!-- jQuery -->
 <script src="AdminLTE/plugins/jquery/jquery.min.js"></script>
@@ -155,21 +146,21 @@
 
 <script>
   $(function () {
-    $("#example1").DataTable({
-      "responsive": true, 
-	  "lengthChange": false, 
-	  "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    // $('#example2').DataTable({
-    //   "paging": true,
-    //   "lengthChange": false,
-    //   "searching": false,
-    //   "ordering": true,
-    //   "info": true,
-    //   "autoWidth": false,
-    //   "responsive": true,
-    // });
+    // $("#example1").DataTable({
+    //   "responsive": true, 
+	//   "lengthChange": false, 
+	//   "autoWidth": false,
+    //   "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
   });
 </script>
 

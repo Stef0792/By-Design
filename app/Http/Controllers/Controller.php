@@ -20,6 +20,7 @@ class Controller extends BaseController
     public $OverwriteModel = [];
     public $pagination = 20;
     public $botaoVisualizar = false;
+    public $viewConfig = [];
 
     public function __construct() {
         $segments = explode('/', $_SERVER['REQUEST_URI']);
@@ -39,7 +40,7 @@ class Controller extends BaseController
 
         if ($this->view)
             $view = $this->view;
-        
+        // print_r($this->Model); exit;
         return view($view)
                         ->with('Area', $this->Area)
                         ->with('Model', $this->Model)
@@ -72,7 +73,7 @@ class Controller extends BaseController
                 if(strpos($key, "/form") !== false){
                     unset($request[$key]);
                 }
-            } 
+            }            
                 
             $Model = $this->save($Model, $request);
 
@@ -101,7 +102,69 @@ class Controller extends BaseController
                         ->with('Area', $this->Area)
                         ->with('Model', $Model)
                         ->with('ConfigFile', $this->getConfigFile())
+                        ->with('viewConfig', $this->viewConfig)
                         ->with('title', $this->Area->titulo);
+    }
+
+    /**
+     * save
+     *
+     * FunÃ§Ã£o que executa a requisição POST de um formulÃ¡rio
+     *
+     *
+     * @param  object, obj
+     * @return int
+     */
+    public function save($Model, $data) {
+
+        if (method_exists($Model, 'bind')) {
+            $data = $Model->bind($data);
+
+            if (!$data) {
+                return $Model;
+            }
+        }
+
+        unset($data['_token']);
+
+        if (isset($data['id']) && $data['id']) {
+            //Registro essa ediçao no log
+            // Logs::gerarLog(\Auth::user(), $this->Area, 2, $data['id']);
+            $Model = $Model->find($data['id']);
+        } else {
+            //Registro essa inserçao no log
+            // Logs::gerarLog(\Auth::user(), $this->Area, 1);
+        }
+
+        if (isset($data['ativo'])) {
+            if ($data['ativo'] == 'on') {
+                $data['ativo'] = 1;
+            }
+        } else {
+
+            if (isset($Model->ativo))
+                $data['ativo'] = 0;
+        }
+
+        foreach ($data AS $key => $val) {
+            if (!is_array($val)) {
+                $Model->$key = utf8_decode(utf8_encode($val));
+            }
+        }
+
+        // print_r($Model); exit;
+
+        $Model->save();         
+
+        /*
+         * Executa uma funÃ§Ã£o com o
+         * retorno do objeto inserido
+         */
+        if (method_exists($Model, 'afterSave')) {
+            $Model->afterSave($Model, $data);
+        }
+
+        return $Model;
     }
 
     /**

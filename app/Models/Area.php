@@ -18,12 +18,7 @@ class Area extends MyModel
 
     public function bind($data)
     {
-        unset($data['areas/form']);
-        if(isset($data['super_admin']) && $data['super_admin'] == 'on'){
-            $data['super_admin'] = 1;
-        } else {
-            $data['super_admin'] = 0;
-        }
+        unset($data['areas/form']);        
 
         return $data;
     }

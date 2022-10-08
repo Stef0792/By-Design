@@ -17,7 +17,7 @@ class FormHelper
      * @return String
      */
 
-	public static function getInput($data, $id_relation=false, $col_sm_label=false)
+	public static function getInput($data, $id_relation=false, $col_sm_label=false, $viewConfig = false)
 	{
 		$Route      = \Route::getCurrentRoute()->getAction();
 		$Route      = str_replace('@', '\\', $Route['controller']);
@@ -49,12 +49,14 @@ class FormHelper
 
 		extract($data);
 
-		if(isset($label) && $label && $col_sm_label){
-			$col_sm_input = 'col-sm-'.(12 - $col_sm_label);
-			$col_sm_label = 'col-sm-'.$col_sm_label.' control-label';
-		} else {
-			$col_sm_input = 'col-sm-'.$col_sm_label;
-		}
+		// if(isset($label) && $label && $col_sm_label){
+		// 	$col_sm_input = 'col-sm-'.(12 - $col_sm_label);
+		// 	$col_sm_label = 'col-sm-'.$col_sm_label.' control-label';
+		// } else {
+		// 	$col_sm_input = 'col-sm-'.$col_sm_label;
+		// }
+
+		$col_sm_input = $col_sm_label ?? 12;
 
 		/**
 		* Verifica se existe model e valor
@@ -69,12 +71,17 @@ class FormHelper
 			$value = '';
 
 
-		if(isset($label) && $label)
-			$input.='<label for="'.$id.'" class="'.$col_sm_label.'">'.trans($translate).'</label>';
+		if(isset($label) && $label){
+			$translate = ucwords(str_replace("_", " ", $translate));
+			$class="";
+			if($type == "template"){
+				$class = "lblForm";
+			}
+			$input.='<label for="'.$id.'" class="'.$class.'">'.trans($translate).'</label>';
+		}
 
-
-		if($col_sm_label)
-			$input.='<div class="'.$col_sm_input.'">';
+		// if($col_sm_label)
+			// $input.='<div class="'.$col_sm_input.'">';
 
 
 		if(isset($super_admin) && $super_admin){
@@ -112,7 +119,7 @@ class FormHelper
 
 			case 'file':
 				
-					$input.='<input type="file" name="'.$name.'" id="'.$id.'" class="form-control '.$class.'" '.$disabled.' />';
+					$input.='<input type="file" name="'.$name.'" id="'.$id.'" class="form-control'.$class.'" '.$disabled.' />';
 				
 				break;
 
@@ -143,7 +150,7 @@ class FormHelper
 
 			case 'select':
 
-				$input.='<select name="'.$name.'" id="'.$id.'" data-placeholder="'.trans($translate).'" data-value="'.$value.'" class="select2" style="width: 100%;" '.$disabled.'>';
+				$input.='<select name="'.$name.'" id="'.$id.'" data-placeholder="'.trans($translate).'" data-value="'.$value.'" class="form-control" style="width: 100%;" '.$disabled.'>';
 
 					$input.="<option value='0'>".((isset($placeholder) && ( !isset($label) || !$label))?$placeholder:'Selecione:')."</option>";
 
@@ -209,6 +216,7 @@ class FormHelper
 						$dataTemplate['Model'] = $Model;
 						$dataTemplate['nomeCampo'] = isset($alias) ? $alias : $name;
 						$dataTemplate['arrayModel'] = (array) $Model->getAttributes();
+						$dataTemplate['viewConfig'] = (array) $viewConfig;
 					}
 
 					//echo view('layouts.templates/'.$template, $dataTemplate)->render();
@@ -240,9 +248,9 @@ class FormHelper
 			$input.='<p class="help-block">'.$help.'</p>';
 		}
 
-		if($col_sm_label){
-			$input.='</div>';
-		}
+		// if($col_sm_label){
+		// 	$input.='</div>';
+		// }
 
 		echo $input;
 	}

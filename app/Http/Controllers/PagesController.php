@@ -30,4 +30,9 @@ class PagesController extends Controller
     public function login(){
         return view('login');
     }
+
+    public function killSession(){
+        \Session::flush();
+        return redirect('/login');
+    }
 }

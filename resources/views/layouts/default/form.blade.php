@@ -6,7 +6,22 @@
 $pk = $Model->pk;
 
 ?>
+<style>
+    #FormContent{
+        padding: 2%;
+    }
 
+    .form-control{
+        background-color: #FFF !important;
+        color: #000 !important;
+    }
+
+    .select2{
+        background-color: #FFF !important;
+        color: #000 !important;
+    }
+    
+</style>
 
     <!-- Main content -->
 <section class="content">
@@ -31,17 +46,28 @@ $pk = $Model->pk;
                         @if(isset($Model->$pk))
                         <input type="hidden" name="{{ $pk }}" id="{{ $pk }}" value="{{ $Model->$pk }}" />
                         @endif
-
-                        @foreach($ConfigFile['fields'] AS $field)
-                        <div class="form-group"> 
-                        <?php 
-                            $ModelId = isset($Model)?$Model->$pk:null;
-                            $col_sm  = isset($field['col-sm'])?$field['col-sm']:2;
-                        ?>
-                        {{ FormHelper::getInput($field, $ModelId, $col_sm) }}
+                        <div class="row">
+                            <?php $row = 1; $cont = 1;?>
+                            @foreach($ConfigFile['fields'] AS $field)
+                                <?php 
+                                    if($cont > 1 && ($field['row'] > $row)){
+                                        $row = $field['row'];
+                                        echo "</div>";
+                                        echo "<div class='row' style='margin-top: 10px;'>";
+                                    }
+                                ?>   
+                                <div class="col-md-<?= $field['size']; ?>"> 
+                                    <?php 
+                                        $ModelId = isset($Model)?$Model->$pk:null;
+                                        $col_sm  = isset($field['col-sm'])?$field['col-sm']:2;
+                                    ?>
+                                    {{ FormHelper::getInput($field, $ModelId, $col_sm, $viewConfig) }}
+                                </div>
+                                <?php 
+                                    $cont++;
+                                ?>                        
+                            @endforeach
                         </div>
-                        @endforeach
-
                         @if( !isset($Model) || $Model->send_form_button)
                         <div class="form-group">
                             <input type="submit" data-lang="PT" value="Enviar" id="enviarForm" class="btn btn-primary" style="float:right;" />

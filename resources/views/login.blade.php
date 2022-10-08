@@ -45,9 +45,9 @@
             <!-- /.login-logo -->
             <div class="card">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="text-align: center;">
                         <div class="holdLogo">
-                            <img src="<?php echo URL::to('/'); ?>/logo_privacy.png" style="max-width: 220px;" />
+                            <img src="<?php echo URL::to('/'); ?>/logo_byDesign.jpeg" style="max-width: 150px;" />
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                             </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block" style="width: 95%; margin-top: 3%; background-color: #2DD6E0;">Entrar</button>
+                            <button type="submit" class="btn btn-primary btn-block" style="width: 95%; margin-top: 3%; background-color: #D451EB;">Entrar</button>
                         </div>
                         <!-- /.col -->
                         </div>
@@ -91,7 +91,7 @@
         </div>
     </div>
     <div class="col-md-5" style="float: left; padding: 0px;">
-        <img src="<?php echo URL::to('/'); ?>/img_login_privacy.jpeg" style="max-width: 360px; height: 433px;" />
+        <img src="<?php echo URL::to('/'); ?>/fundo.jpeg" style="max-width: 360px; height: 480px;" />
     </div>
 </div>
 <!-- /.login-box -->

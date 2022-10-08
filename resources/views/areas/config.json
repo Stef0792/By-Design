@@ -58,31 +58,13 @@
 			},
 			{
 				"label":true,
-				"name":"titulo",
-				"translate":"titulo",
+				"name":"nome",
+				"translate":"nome",
 				"type":"text",
-				"id":"titulo",
+				"id":"nome",
 				"class":"",
 				"validate":"text|max:255|min:3"
-			},
-			{
-				"label":true,
-				"name":"subtitulo",
-				"translate":"subtitulo",
-				"type":"text",
-				"id":"subtitulo",
-				"class":"",
-				"validate":"text|max:255|min:3"
-			},
-			{
-				"label":true,
-				"name":"descricao",
-				"translate":"descricao",
-				"type":"text",
-				"id":"descricao",
-				"class":"",
-				"validate":"text|max:255|min:3"
-			},
+			},			
 			{
 				"label":true,
 				"name":"icon",
@@ -112,7 +94,7 @@
 			},
 			{
 				"label":true,
-				"name":"order_by",
+				"name":"order",
 				"translate":"order_by",
 				"type":"text",
 				"id":"order_by",

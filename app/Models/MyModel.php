@@ -13,7 +13,7 @@ class MyModel extends Model
     public $deletar          = true;
 
     
-    const CREATED_AT    = 'criado_em';
+    // const CREATED_AT    = 'criado_em';
    // const UPDATED_AT    = 'editado_em';
 
 	/**

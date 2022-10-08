@@ -7,14 +7,31 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/AdminLTE/plugins/fontawesome-free/css/all.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/AdminLTE/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/AdminLTE/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/AdminLTE/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/AdminLTE/plugins/summernote/summernote-bs4.min.css">
+
+  <script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -45,7 +62,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+        <a class="nav-link" href="{{ url('killSession/') }}" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li>
@@ -88,10 +105,8 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <?php //echo 2; exit; //$AreasPermissoes = explode(',', \Auth::user()->areas_permissoes); ?>
-            @foreach(App\Models\Area::where('status', 1)->orderBy('order', 'asc')->get() AS $Area)
-                <?php //($Area); exit;//$Area->Subareas = App\Areas::where(array('ativo' => 1, 'id_pai' => $Area->id))->orderBy('order_by', 'asc')->get(); ?>
-                
+            
+            @foreach(App\Models\Area::where('status', 1)->orderBy('order', 'asc')->get() AS $Area)                
                 @if($Area->controller)                     
                     <li class="nav-item">
                         <a href="{{ url($Area->url) }}" class="nav-link">
@@ -133,26 +148,17 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="<?php echo URL::to('/'); ?>/AdminLTE/plugins/jquery/jquery.min.js"></script>
+<!-- <script src="<?php// echo URL::to('/'); ?>/AdminLTE/plugins/jquery/jquery.min.js"></script> -->
+
 <!-- Bootstrap -->
 <script src="<?php echo URL::to('/'); ?>/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="<?php echo URL::to('/'); ?>/AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo URL::to('/'); ?>/AdminLTE/dist/js/adminlte.js"></script>
+<!-- Bootstrap Switch -->
+<script src="<?php echo URL::to('/'); ?>/AdminLTE/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 
-<!-- PAGE PLUGINS -->
-<!-- jQuery Mapael -->
-<script src="<?php echo URL::to('/'); ?>/AdminLTE/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="<?php echo URL::to('/'); ?>/AdminLTE/plugins/raphael/raphael.min.js"></script>
-<script src="<?php echo URL::to('/'); ?>/AdminLTE/plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="<?php echo URL::to('/'); ?>/AdminLTE/plugins/jquery-mapael/maps/usa_states.min.js"></script>
-<!-- ChartJS -->
-<script src="<?php echo URL::to('/'); ?>/AdminLTE/plugins/chart.js/Chart.min.js"></script>
 
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo URL::to('/'); ?>/AdminLTE/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?php echo URL::to('/'); ?>/AdminLTE/dist/js/pages/dashboard2.js"></script>
 </body>
 </html>
