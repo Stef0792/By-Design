@@ -263,4 +263,43 @@ class Controller extends BaseController
             $this->Model = $Model->paginate($this->pagination);
         }
     }
+
+    public function getFormFields(){
+        $return = [];
+        $return[] = 'Em linhas gerais, indique o nome do processo/atividade de tratamento do dado pessoal.';
+        $return[] = 'Agora descreva de forma detalhada todo o processo, indicando quais dados pessoais, dados pessoais sensíveis e/ou de menores são tratados; de que pessoas são estes dados; quem tem acesso a estes dados e se são compartilhados; quais os sistemas e etapas da coleta, armazenamento, tratamento, etc destes dados.';
+        $return[] = 'Por fim, indique o motivo pelo qual estes dados são tratados.';
+        // $return[] = 'O fornecedor realiza Backup da aplicação? Qual a frequência e política de backup?';
+        // $return[] = 'Os dados em repouso e em transito, são criptografados?';
+        // $return[] = 'Existe processo de gestão de vulnerabilidades para servidores e banco de dados?';
+        // $return[] = 'O fornecedor realiza testes de penetração (Pentest) em seu ambiente regularmente? Se sim, Com que frequência?';
+        // $return[] = 'Há documentação sobre a arquitetura de segurança do aplicativo? Se sim, apresentar.';
+        // $return[] = 'Os servidores possuem segmentação de rede para garantir o não acesso de outros clientes?';
+        // $return[] = 'Certificações visíveis para clientes (SOC, ISO, etc.). Detalhar quais.';
+        // $return[] = 'Existe processo de gestão de vulnerabilidades?';
+        // $return[] = 'É possivel integração da solução através de API? Se sim, qual(is) tipo(s)?';
+        // $return[] = 'A solução prevê um plano para recuperação de desastres em seu ambiente?';
+        
+        return $return;
+    }
+
+
+    public function getFormFieldsPrivacy(){
+        $return = [];
+        $return[] = 'Alguma senha que seja gravada no código-fonte do produto/sistema ("hardcoded")?';
+        $return[] = 'A solução possui trilha de auditoria? Se sim, detalhe. (exemplo: Last Logon, Log de acessos, Log de transações...)';
+        $return[] = 'A solução possui a gestão granular dos perfis (RBAC)?';
+        // $return[] = 'O fornecedor realiza Backup da aplicação? Qual a frequência e política de backup?';
+        // $return[] = 'Os dados em repouso e em transito, são criptografados?';
+        // $return[] = 'Existe processo de gestão de vulnerabilidades para servidores e banco de dados?';
+        // $return[] = 'O fornecedor realiza testes de penetração (Pentest) em seu ambiente regularmente? Se sim, Com que frequência?';
+        // $return[] = 'Há documentação sobre a arquitetura de segurança do aplicativo? Se sim, apresentar.';
+        // $return[] = 'Os servidores possuem segmentação de rede para garantir o não acesso de outros clientes?';
+        // $return[] = 'Certificações visíveis para clientes (SOC, ISO, etc.). Detalhar quais.';
+        // $return[] = 'Existe processo de gestão de vulnerabilidades?';
+        // $return[] = 'É possivel integração da solução através de API? Se sim, qual(is) tipo(s)?';
+        // $return[] = 'A solução prevê um plano para recuperação de desastres em seu ambiente?';
+        
+        return $return;
+    }
 }

@@ -26,7 +26,8 @@
 			"id":"#",
 			"razao_social":"Razão Social",
 			"responsavel":"Responsavel",
-			"responsavel_celular":"Celular do Responsavel"			
+			"responsavel_celular":"Celular do Responsavel",
+			"status": "Status"		
 		}
 	},
 

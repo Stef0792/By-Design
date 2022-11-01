@@ -105,8 +105,15 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            
-            @foreach(App\Models\Area::where('status', 1)->orderBy('order', 'asc')->get() AS $Area)                
+            <?php 
+              $departamento = \Auth::user()->departamento;              
+              if($departamento == "juridico"){
+                $areas = App\Models\Area::whereIn('status', [1,2])->orderBy('order', 'asc')->get();                
+              }else{
+                $areas = App\Models\Area::where('status', 1)->orderBy('order', 'asc')->get();
+              }            
+            ?>
+            @foreach($areas AS $Area)                
                 @if($Area->controller)                     
                     <li class="nav-item">
                         <a href="{{ url($Area->url) }}" class="nav-link">
