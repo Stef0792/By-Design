@@ -55,6 +55,8 @@ class AprovacaoController extends Controller
         $retorno["status"]     = 1;
         $retorno["fornecedor"] = $forn;
         $retorno["respostas"]  = $resp;
+        $retorno["parecer"]  = $aprovacao->observacoes;
+        $retorno["status_aprovacao"]  = $aprovacao->status;
 
         echo json_encode($retorno);
     }
